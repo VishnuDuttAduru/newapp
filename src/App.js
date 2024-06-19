@@ -1,13 +1,26 @@
-import './App.css';
-import Todo from './Filter/Todo';
+import React, { useContext } from 'react'
+import Intro from './components/intro/Intro'
+import About from './components/intro/about/About'
+import ProductList from './components/productList/ProductList'
+import Contact from './components/contact/Contact'
+import Toggle from './components/toggle/Toggle'
+import { themeContext } from './context'
 
-function App() {
+const App = () => {
+  const {state} = useContext(themeContext);
+  const darkMode = state?.darkMode;
   return (
-    <div className="App">
-      <h1>Todos</h1>
-      <Todo />
+    <div style={{
+      backgroundColor: darkMode ? "#222" : "white", 
+      color: darkMode && "white"
+    }}>
+      <Toggle />
+      <Intro />
+      <About />
+      <ProductList />
+      <Contact />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
