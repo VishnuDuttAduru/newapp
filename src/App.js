@@ -1,13 +1,11 @@
-import './App.css';
-import Todo from './Filter/Todo';
+import React from 'react'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <h1>Todos</h1>
-      <Todo />
+    <div>
+      Hello World
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
