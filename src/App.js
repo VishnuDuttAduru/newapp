@@ -1,9 +1,20 @@
-import React from 'react'
+import React from 'react';
+import "./App.scss"
+import Navbar from './components/navbar/Navbar';
 
 const App = () => {
   return (
     <div>
-      Hello World
+      <section>
+        <Navbar />
+      </section>
+      <section>Parallax</section>
+      <section>Services</section>
+      <section>Parallax</section>
+      <section>Portfolio 1</section>
+      <section>Portfolio 2</section>
+      <section>Portfolio 3</section>
+      <section>Contact</section>
     </div>
   )
 }
