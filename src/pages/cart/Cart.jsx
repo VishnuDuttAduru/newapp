@@ -1,11 +1,12 @@
 import React from 'react'
+import "./Cart.css";
 
-const Filter = () => {
+const Cart = () => {
     return (
         <div>
-
+            
         </div>
     )
 }
 
-export default Filter
+export default Cart
