@@ -1,57 +1,68 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import "./Navbar.css";
 import { assets } from "../../assets/assets.js"
+import { Link } from 'react-router-dom';
+import { StoreContext } from '../../context/StoreContext.jsx';
 
-const Navbar = () => {
+const Navbar = ({ setShowLogin }) => {
 
     const [menu, setMenu] = useState("Home");
 
+    const { getTotalCartAmount } = useContext(StoreContext);
+
     return (
         <div className='nav-bar'>
-            <img 
-                src={assets.logo} 
-                alt="logo" 
-                className='logo' 
-            />
+            <Link to='/'>
+                <img
+                    src={assets.logo}
+                    alt="logo"
+                    className='logo'
+                /></Link>
             <ul className="nav-menu">
-                <li 
-                    onClick={() => setMenu("Home")} 
+                <Link
+                    to="/"
+                    onClick={() => setMenu("Home")}
                     className={menu === "Home" ? "active" : ""}
                 >
                     Home
-                </li>
-                <li 
-                    onClick={() => setMenu("Menu")} 
+                </Link>
+                <a
+                    href='#explore-menu'
+                    onClick={() => setMenu("Menu")}
                     className={menu === "Menu" ? "active" : ""}
                 >
                     Menu
-                </li>
-                <li 
-                    onClick={() => setMenu("Mobile-App")} 
+                </a>
+                <a
+                    href='#app-download'
+                    onClick={() => setMenu("Mobile-App")}
                     className={menu === "Mobile-App" ? "active" : ""}
                 >
                     Mobile-App
-                </li>
-                <li 
-                    onClick={() => setMenu("Contact-Us")} 
+                </a>
+                <a
+                    href='#footer'
+                    onClick={() => setMenu("Contact-Us")}
                     className={menu === "Contact-Us" ? "active" : ""}
                 >
                     Contact Us
-                </li>
+                </a>
             </ul>
             <div className="nav-right">
-                <img 
-                    src={assets.search_icon} 
-                    alt="search-icon" 
+                <img
+                    src={assets.search_icon}
+                    alt="search-icon"
                 />
                 <div className="nav-search-icon">
-                    <img 
-                        src={assets.basket_icon} 
-                        alt="cart" 
-                    />
-                    <div className="dot"></div>
+                    <Link to='/cart'>
+                        <img
+                            src={assets.basket_icon}
+                            alt="cart"
+                        />
+                    </Link>
+                    <div className={getTotalCartAmount() === 0 ? "" : "dot" }></div>
                 </div>
-                <button>Sign In</button>
+                <button onClick={() => setShowLogin(true)}>Sign In</button>
             </div>
         </div>
     )
